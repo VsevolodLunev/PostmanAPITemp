@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "ae2b165a-06a9-499b-9331-95e6a69f99aa",
-		"name": "All APIChallenges Лунев В.A.",
+		"name": "AllAPIChallenges Лунев В.A.",
 		"description": "All 39 Callanges in 65 requests, where 15 is delete. Can run one time per 10 min, couse the data clears itself every 10 minutes and other people might be using it so you can't rely on data existing between requests.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25920758"
