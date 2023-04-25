@@ -1,0 +1,804 @@
+{
+	"info": {
+		"_postman_id": "497afb45-4751-4642-887f-7e500bae9889",
+		"name": "Gectraro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25920758"
+	},
+	"item": [
+		{
+			"name": "Текущий пользователь",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//User.id = pm.response.body.get(\"id\")",
+							"//console.log(\"USER ID \" + Userid)",
+							"//pm.collectionVariables.set(\"USER ID\", User.id)",
+							"var jsonData = JSON.parse(responseBody);",
+							"var Userid = jsonData.id",
+							"console.log(\"User.id\" ,Userid);",
+							"pm.collectionVariables.set(\"User.id\", Userid)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "3Hyq-sLT47avcfbtGl6Rvj-zKjoE9YNZ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/users/current",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1) Список компаний",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var obj = JSON.parse(responseBody);",
+							"console.log(obj[0].id)",
+							"pm.collectionVariables.set(\"Company.id\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/companies",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Данные  компании",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"/*var obj = JSON.parse(responseBody);",
+							"console.log(obj[0].id)",
+							"pm.collectionVariables.set(\"Company.id\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid) */"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/companies/{{Company.id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"companies",
+						"{{Company.id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2) Список проектов",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var obj = JSON.parse(responseBody);",
+							"console.log(obj[0].id)",
+							"pm.collectionVariables.set(\"Project.id\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/companies/{{Company.id}}/projects",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"companies",
+						"{{Company.id}}",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3) Список этапов",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var obj = JSON.parse(responseBody);",
+							"console.log(\"Stage.id\",obj[0].id)",
+							"pm.collectionVariables.set(\"Stage.id\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/projects/{{Project.id}}/stages",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"{{Project.id}}",
+						"stages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4) Список задач(работ) в этапе",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var obj = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"task.id\", obj[1].id)",
+							"console.log(\"task.id\", obj[1].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/stages/{{Stage.id}}/tasks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"stages",
+						"{{Stage.id}}",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5) Список ресурсов по работе",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var obj = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"resource.id\", obj[0].id)",
+							"console.log(\"resource.id\",obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/tasks/{{task.id}}/resources",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"tasks",
+						"{{task.id}}",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6) Данные ресурса",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"/* var obj = JSON.parse(responseBody);",
+							"console.log(\"task.resource.id\",obj[0].id)",
+							"pm.collectionVariables.set(\"task.resource.id\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/tasks/{{task.id}}/resources/{{resource.id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"tasks",
+						"{{task.id}}",
+						"resources",
+						"{{resource.id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7) Список ресурсов в смете",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var obj = JSON.parse(responseBody);",
+							"console.log(\"project.resource.id\",obj[13].id)",
+							"pm.collectionVariables.set(\"Stage.resource.id\", obj[13].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/projects/{{Project.id}}/resources",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"{{Project.id}}",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8) Экспорт бюджетной сметы в Excel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"/*var obj = JSON.parse(responseBody);",
+							"console.log(\"project.resource.id\",obj[13].id)",
+							"pm.collectionVariables.set(\"Stage.resource.id\", obj[13].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/projects/{{Project.id}}/estimate/export/budget",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"{{Project.id}}",
+						"estimate",
+						"export",
+						"budget"
+					],
+					"query": [
+						{
+							"key": "JSON.stringify(versions)",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9) Список задач(работ) на этапе",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"var obj = JSON.parse(responseBody);",
+							"console.log(\"Stage.task.id1\",obj[0].id)",
+							"pm.collectionVariables.set(\"Stage.task.id1\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/stages/{{Stage.id}}/tasks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"stages",
+						"{{Stage.id}}",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "JSON.stringify(versions)",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 Данные этапа",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"/*var obj = JSON.parse(responseBody);",
+							"console.log(\"project.resource.id\",obj[13].id)",
+							"pm.collectionVariables.set(\"Stage.resource.id\", obj[13].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/projects/{{Project.id}}/stages/{{Stage.id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"{{Project.id}}",
+						"stages",
+						"{{Stage.id}}"
+					],
+					"query": [
+						{
+							"key": "JSON.stringify(versions)",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11 Данные Работы",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"/* var obj = JSON.parse(responseBody);",
+							"console.log(\"stage.resource.id\",obj[0].id)",
+							"pm.collectionVariables.set(\"Stage.resource.id\", obj[0].id)",
+							"//var jsonData = JSON.parse(responseBody);",
+							"//var Companyid = jsonData.id[0]",
+							"//console.log(\"Company.id\" ,Companyid);",
+							"//pm.collectionVariables.set(\"User.id\", Userid)*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.gectaro.com/v1/stages/{{Stage.id}}/tasks/{{task.id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"gectaro",
+						"com"
+					],
+					"path": [
+						"v1",
+						"stages",
+						"{{Stage.id}}",
+						"tasks",
+						"{{task.id}}"
+					],
+					"query": [
+						{
+							"key": "JSON.stringify(versions)",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{Bearer Token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"/*pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"console.log(\"Status code is 200\") ",
+					"*/"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Bearer Token",
+			"value": "OWjzmbxBPIVX9iRCa83_04-97E8FSny7",
+			"type": "string"
+		},
+		{
+			"key": "Company.id",
+			"value": 7735
+		},
+		{
+			"key": "Project.id",
+			"value": 52601
+		},
+		{
+			"key": "Stage.id",
+			"value": 275288
+		},
+		{
+			"key": "task.id",
+			"value": 1508070
+		},
+		{
+			"key": "resource.id",
+			"value": 6934046
+		},
+		{
+			"key": "User.id",
+			"value": 10434
+		},
+		{
+			"key": "Stage.resource.id",
+			"value": 6939987
+		},
+		{
+			"key": "Stage.task.id1",
+			"value": ""
+		}
+	]
+}
